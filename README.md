@@ -1,65 +1,69 @@
-🧾 Employee Management System (Java Servlet + Oracle DB)
+# 🧾 Employee Management System (Java Servlet + Oracle DB)
 
-This is a **Java EE-based web application** for managing employee records using **JDBC**, **Oracle Database**, and **Jakarta Servlets**. It allows users to perform full CRUD operations (Create, Read, Update, Delete) on an `Employee` table.
+This is a **Java EE-based web application** that allows users to manage employee records. It uses **Jakarta Servlets**, **JDBC**, and **Oracle Database** to perform all CRUD operations on the `Employee` table. Built with a modular architecture and clean UI, it ensures secure and maintainable code practices.
 
+---
 
-
- 📌 Features
+## 📌 Features
 
 - ✅ Add new employees (Insert)
 - ✅ View all employee details (Select)
 - ✅ Update Aadhar number by ID (Update)
 - ✅ Delete employee by ID (Delete)
-- ✅ Clean, modular code structure using interface and implementation layers
-- ✅ User feedback and styled messages in UI
-- ✅ Secure database operations with prepared statements
+- ✅ Clean, modular code using interfaces and implementation layers
+- ✅ Styled HTML/CSS interface with user feedback
+- ✅ Secure DB operations using Prepared Statements
 
+---
 
-
- 🧱 Technologies Used
+## 🧱 Technologies Used
 
 - Java 8+
-- Jakarta Servlet API (formerly Javax)
-- Oracle Database (XE, SE, or EE)
+- Jakarta Servlet API
+- Oracle Database (XE/SE/EE)
 - JDBC (Oracle JDBC driver)
 - HTML & CSS
-- Apache Tomcat (or any compatible servlet container)
+- Apache Tomcat (9.x or 10.x)
 - Maven (optional)
 - Git & GitHub
 
+---
 
+## 📁 Project Structure
 
-📁 Project Structure
-
+```
 project-root/
 │
 ├── src/
-│ └── com/servlet/
-│ ├── connectionProvider/ # Handles DB connection
-│ │ └── ConnectionProvider.java
-│ ├── interfaceOperation/ # Interfaces and POJO
-│ │ ├── Employee.java
-│ │ └── EmployeeService.java
-│ ├── implementationOfEmployee/ # Service implementation
-│ │ └── EmployeeServiceImplementation.java
-│ └── operationToPerform/ # Servlets (Insert, Update, Delete, Select)
-│ ├── InsertServlet.java
-│ ├── DeleteServlet.java
-│ ├── UpdateServlet.java
-│ └── SelectServlet.java
+│   └── com/servlet/
+│       ├── connectionProvider/
+│       │   └── ConnectionProvider.java
+│       ├── interfaceOperation/
+│       │   ├── Employee.java
+│       │   └── EmployeeService.java
+│       ├── implementationOfEmployee/
+│       │   └── EmployeeServiceImplementation.java
+│       └── operationToPerform/
+│           ├── InsertServlet.java
+│           ├── DeleteServlet.java
+│           ├── UpdateServlet.java
+│           └── SelectServlet.java
 │
-├── web/ # Web content
-│ ├── index.html # Home page
-│ ├── insert.html
-│ ├── update.html
-│ ├── select.html
-│ └── delete.html
+├── web/
+│   ├── index.html
+│   ├── insert.html
+│   ├── update.html
+│   ├── select.html
+│   └── delete.html
 │
-└── README.md # Project documentation
+└── README.md
+```
 
- Database Setup
+---
 
-1. **Oracle Table Script**:
+## 🗄️ Database Setup
+
+### 1. Oracle Table Script
 
 ```sql
 CREATE TABLE Employee (
@@ -67,59 +71,84 @@ CREATE TABLE Employee (
     id NUMBER PRIMARY KEY,
     aadharNo VARCHAR2(20)
 );
-Connection Configuration (inside ConnectionProvider.java):
+```
 
+### 2. DB Connection Configuration (`ConnectionProvider.java`)
 
+```java
 String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 String userName = "advjava";
 String password = "abhi";
-Update these fields according to your local Oracle DB setup.
+```
 
-🚀 How to Run
-1. Clone the Repository
+Update the credentials based on your local Oracle DB settings.
 
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
-2. Import Project into IDE
-Use Eclipse, IntelliJ IDEA, or NetBeans
+---
 
-Import as a Dynamic Web Project
+## 🚀 How to Run
 
-3. Add Oracle JDBC Driver
-Download the latest ojdbc8.jar (or compatible)
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+   cd YOUR_REPO_NAME
+   ```
 
-Add it to WEB-INF/lib or your project build path
+2. **Import into IDE**
+   - Use Eclipse / IntelliJ / NetBeans
+   - Import as a **Dynamic Web Project**
 
-4. Deploy to Server
-Use Apache Tomcat (9.x or 10.x)
+3. **Add Oracle JDBC Driver**
+   - Download `ojdbc8.jar`
+   - Add it to `WEB-INF/lib` or your project's classpath
 
-Deploy the .war file or run directly from your IDE
+4. **Deploy to Apache Tomcat**
+   - Use Tomcat 9.x or 10.x
+   - Run from IDE or deploy `.war` file manually
 
-5. Access Application
-Open your browser and go to:
+5. **Open in Browser**
+   ```
+   http://localhost:8080/YourAppName/index.html
+   ```
 
-http://localhost:8080/YourAppName/index.html
-🌐 Servlet Endpoints
-Servlet	URL Mapping	Description
-Insert	/InsertServlet	Insert new employee
-Update	/UpdateServlet	Update Aadhar number
-Delete	/DeleteServlet	Delete employee by ID
-Select	/SelectServlet	View all employees
+---
 
-🧠 Design Pattern & Architecture
-Singleton pattern for database connection (via ConnectionProvider)
+## 🌐 Servlet Endpoints
 
-DAO/Service Layer abstraction using interface (EmployeeService)
+| Servlet | URL Mapping      | Description               |
+|---------|------------------|---------------------------|
+| Insert  | `/InsertServlet` | Add new employee          |
+| Update  | `/UpdateServlet` | Update employee Aadhar    |
+| Delete  | `/DeleteServlet` | Delete employee by ID     |
+| Select  | `/SelectServlet` | View all employee records |
 
-MVC-aligned modular packaging
+---
 
-Prepared Statements to prevent SQL injection
+## 🧠 Design Patterns & Architecture
 
-Exception handling for robustness
+- Singleton Pattern for DB Connection
+- Interface-driven DAO/Service Layer
+- MVC-aligned modular packaging
+- Use of Prepared Statements for security
+- Robust exception handling
+- Clean front-end UI with validation
 
-Clean HTML/CSS UI for easy interaction
+---
 
+## 📜 License
 
-📜 License
-This project is licensed under the MIT License.
-Feel free to use, modify, and share it.
+This project is licensed under the [MIT License](LICENSE).
+
+> Feel free to use, modify, and distribute this code in your own projects.
+
+---
+
+## 🙌 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
+
+---
+
+## 💡 Author
+
+**Abhijit Borchate**  
+_Java Developer & Backend Enthusiast_
